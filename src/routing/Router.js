@@ -8,17 +8,10 @@ class Routing extends Component {
   render() { 
     return (
       <Router>
-        
-        <div>
-
           <Switch>
-
             <Route path='/appart/:piece' component={Piece}/>
             <Route path='/' component={Appart}/>
-
           </Switch>
-        </div>
-
       </Router>
     );
   }

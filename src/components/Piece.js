@@ -16,12 +16,20 @@ class Piece extends Component {
 
     const appart = items[piece];
 
-    return appart.map((data, index) => <Item key={index} data={data}/>)
+    return appart.map((data, index) => {
+      return (
+        <div key={index}>
+          <Item data={data}/>
+        </div>
+      );
+    })
   }
 
   render() {
+    const piece = this.props.match.params.piece;    
     return (
       <div>
+        <h4 style={{ textTransform: 'capitalize' }}>{piece}</h4>
         {this.displayItems()}
       </div>
     );

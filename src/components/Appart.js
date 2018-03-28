@@ -2,31 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+
+import PieceRoute from './PieceRoute';
 
 class Appart extends Component {
   render() {
     return (
       <div>
-        <h1>Fais ton appart</h1>
         <Paper>
-          <Menu>
+          <Menu desktop>
 
-            <Link to='/appart/entree'>
-              <MenuItem primaryText="Entrée" leftIcon={<i className="fas fa-home"></i>}/>
-            </Link>
-            <Link to='/appart/bathroom'>
-              <MenuItem primaryText="Bathroom" leftIcon={<i className="fas fa-bath"></i>} />
-            </Link>
-            <Link to='/appart/cuisine'>
-              <MenuItem primaryText="Cuisine" leftIcon={<i className="fas fa-utensils"></i>} />
-            </Link>
-            <Link to='/appart/salon'>
-              <MenuItem primaryText="Salon" leftIcon={<i className="fas fa-couch"></i>} />
-            </Link>
-            <Link to='/appart/chambre'>
-              <MenuItem primaryText="Chambre" leftIcon={<i className="fas fa-bed"></i>} />
-            </Link>
+            <PieceRoute url='entree' primaryText='Entrée' leftIcon='home'/>
+            <PieceRoute url='bathroom' primaryText='Bathroom' leftIcon='bath'/>
+            <PieceRoute url='cuisine' primaryText='Cuisine' leftIcon='utensils'/>
+            <PieceRoute url='salon' primaryText='Salon' leftIcon='couch'/>
+            <PieceRoute url='chambre' primaryText='Chambre' leftIcon='bed'/>
 
           </Menu>
         </Paper>
