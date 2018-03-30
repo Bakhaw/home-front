@@ -1,19 +1,29 @@
-h4 {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  font-size: 25px;
+.fa-check-square {
+  transform: scale(1.2);
+}
+
+.checked {
+  color: #FF7F75;  
+}
+
+.non-checked {
+  color: #D0C9C3;
+}
+
+.gold {
+  color: #fddd25;
+}
+
+.silver {
+  color:#6e6d6d;
+}
+
+.fa-chevron-left {
   color: #333;
 }
 
-.fa-times {
-  color: red;
-}
-
-.fa-check {
-  color: green;
-}
-
-.fa-dollar-sign {
-  color: gold;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Paper from 'material-ui/Paper';
-import Menu from 'material-ui/Menu';
+import { List, ListItem} from 'material-ui/List';
 
 import PieceRoute from './PieceRoute';
 
@@ -9,8 +8,8 @@ class Appart extends Component {
   render() {
     return (
       <div>
-        <Paper>
-          <Menu desktop>
+        <List>
+          <ListItem>
 
             <PieceRoute url='entree' primaryText='Entrée' leftIcon='home'/>
             <PieceRoute url='bathroom' primaryText='Bathroom' leftIcon='bath'/>
@@ -18,8 +17,8 @@ class Appart extends Component {
             <PieceRoute url='salon' primaryText='Salon' leftIcon='couch'/>
             <PieceRoute url='chambre' primaryText='Chambre' leftIcon='bed'/>
 
-          </Menu>
-        </Paper>
+          </ListItem>
+        </List>
       </div>
     );
   }
