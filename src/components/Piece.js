@@ -36,12 +36,13 @@ class Piece extends Component {
 
     this.setState({
       [piece]: newItems
-    })
+    });
   }
 
   render() {
     const piece = this.props.match.params.piece;
-    const arr = this.state[piece];    
+    const arr = this.state[piece];
+    
     return (
       <div>
         <div className="header">
@@ -55,7 +56,8 @@ class Piece extends Component {
           return (
             <div key={index}>
               <List>
-                <Item data={data} toggleCheck={() => this.toggleCheck(data, piece)}/>
+                <Item data={data}
+                      toggleCheck={() => this.toggleCheck(data, piece)}/>
               </List>
             </div>
           );
