@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
+import Checkbox from 'material-ui/Checkbox';
+
+import RemoveButton from './RemoveButton';
 
 class Item extends Component {
-  state = {
-    leftIcon: this.props.data.expansive ? "fas fa-dollar-sign gold" : "fas fa-dollar-sign silver",
-    rightIcon: this.props.data.checked ? "fas fa-check-square checked" : "far fa-check-square not-checked"
-  }
-
   render() {
     return (
-      <div>
+      <div className="item">
         <ListItem primaryText={this.props.data.name}
-                  leftIcon={<i className={this.state.leftIcon}></i>}
-                  rightIcon={<i className={this.state.rightIcon}></i>}
+                  leftIcon={<Checkbox checked={this.props.data.checked} iconStyle={{ fill: '#ff4081' }}/>}
                   onClick={this.props.toggleCheck}
+                  style={{ width: "75vw" }}
         />
+        <RemoveButton removeItem={this.props.removeItem}/>
       </div>
     );
   }

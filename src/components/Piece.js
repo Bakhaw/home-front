@@ -3,46 +3,39 @@ import { Link } from 'react-router-dom';
 import { List } from 'material-ui/List';
 
 import Item from './Item';
-import { entree } from '../items/entree';
-import { bathroom } from '../items/bathroom';
-import { cuisine } from '../items/cuisine';
-import { salon } from '../items/salon';
-import { chambre } from '../items/chambre';
-
+import AddButton from './AddButton';
 
 class Piece extends Component {  
   constructor(props) {
     super(props);
     this.state = {
-      entree,
-      bathroom,
-      cuisine,
-      salon,
-      chambre 
+      items: []
     }
   }
 
-  toggleCheck = (item, piece) => {
-    const arr = this.state[piece];
-    const newItems = arr.map((data, index) => {
-      if (item.name === data.name) {
-        return {
-          ...data,
-          checked: !data.checked
-        }
-      }
-      return data;
-    })
+  async componentWillMount() {
+    const piece = this.props.match.params.piece;
+    const res = await fetch(`http://localhost:8090/${piece}`);
+    const items = await res.json();
+    this.setState({ items });
+  }
 
-    this.setState({
-      [piece]: newItems
+  toggleCheck = async (id) => {
+    const piece = this.props.match.params.piece;    
+    await fetch(`http://localhost:8090/${piece}/update/${id}`, {
+      method: 'POST'
     });
+    window.location.reload();
+  }
+
+  removeItem = async (id) => {
+    const piece = this.props.match.params.piece;
+    await fetch(`http://localhost:8090/${piece}/delete/${id}`);
+    window.location.reload();
   }
 
   render() {
     const piece = this.props.match.params.piece;
-    const arr = this.state[piece];
-    
     return (
       <div>
         <div className="header">
@@ -50,14 +43,15 @@ class Piece extends Component {
             <i className="fas fa-chevron-left"></i>
           </Link>
           <h4 style={{ textTransform: 'capitalize' }}>{piece}</h4>
-          <p></p>
+          <AddButton piece={piece}/>
         </div>
-        {arr.map((data, index) => {
+        {this.state.items.map((data, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="items-container">
               <List>
                 <Item data={data}
-                      toggleCheck={() => this.toggleCheck(data, piece)}/>
+                      toggleCheck={() => this.toggleCheck(data._id)}
+                      removeItem={() => this.removeItem(data._id)}/>
               </List>
             </div>
           );

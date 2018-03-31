@@ -3,7 +3,7 @@
 }
 
 .checked {
-  color: #FF7F75;  
+  color: #FF7F75;
 }
 
 .not-checked {
@@ -26,4 +26,12 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.item {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
 }
